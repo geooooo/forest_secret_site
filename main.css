@@ -1,0 +1,255 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/Roboto/Roboto-Regular.ttf") format("TrueType");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url("fonts/Roboto/Roboto-Bold.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: "ComforterBrush";
+    src: url("fonts/ComforterBrush/ComforterBrush-Regular.ttf") format("TrueType");
+}
+
+* {
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #243225;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+
+.header-logo {
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+}
+
+.header-title {
+    width: 100%;
+    color: #d7d9d6;
+    text-align: center;
+    font-family: "ComforterBrush";
+    font-size: 2em;
+    line-height: 1;
+}
+
+.footer {
+    background-color: #000;
+    color: #d7d9d6;
+    font-family: "Roboto";
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 0.8em;
+}
+
+.footer-first-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-second-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-review {
+    display: flex;
+    flex-direction: row;
+}
+
+.review-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.review-link,
+.review-link:active,
+.review-link:visited {
+    color: #d7d9d6;
+}
+
+.review-icon {
+    width: 1em;
+    height: 1em;
+    background-image: url("images/review-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 0.5em;
+}
+
+.footer-main-contacts,
+.footer-work-times {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-contacts-phonenumber,
+.main-contacts-phonenumber:active,
+.main-contacts-phonenumber:visited {
+    color: #d7d9d6;
+}
+
+.main-contacts-address,
+.work-time:first-child {
+    margin-bottom: 0.5em;
+}
+
+.footer-social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-link {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    background-image: url("images/instagram-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.social-link:last-child {
+    margin-right: 0;
+}
+
+.social-link-instagram {
+    background-image: url("images/instagram-icon.png");
+}
+
+.social-link-telegram {
+    background-image: url("images/telegram-icon.png");
+}
+
+.social-link-vk {
+    background-image: url("images/vk-icon.png");
+}
+
+.content {
+    font-family: "Roboto";
+    color: #65995b;
+    padding: 0 25px;
+    margin-bottom: 30px;
+}
+
+.menu-hookah,
+.menu-food {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-left: 10px double #546e53;
+    border-right: 10px double #546e53;
+    background-color: #1c261c;
+}
+
+.menu-hookah {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 5px double #546e53;
+}
+
+.menu-food {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.menu-hookah-title,
+.menu-food-title {
+    font-family: "RobotoBold";
+    color: #93d170;
+    margin-bottom: 20px;
+}
+
+.menu-hookah-list,
+.menu-food-list {
+    list-style-type: none;
+}
+
+.menu-hookah-item,
+.menu-food-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.menu-hookah-item {
+    flex-direction: row;
+}
+
+.menu-food-item {
+    flex-direction: column;
+}
+
+.menu-food-item-first-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu-food-item-description {
+    padding-top: 2px;
+    font-size: 0.8em;
+    color: #586e58;
+}
+
+.menu-hookah-item:last-child,
+.menu-food-item:last-child {
+    margin-bottom: 0;
+}
+
+.menu-hookah-item-name,
+.menu-food-item-name {
+    margin-right: 20px;
+}
+
+.menu-food-category {
+    margin-bottom: 15px;
+}
+
+.menu-food-category:last-child {
+    margin-bottom: 0;
+}
+
+.menu-food-category-header {
+    color: #93d170;
+    margin-bottom: 15px;
+}
