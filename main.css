@@ -165,7 +165,7 @@ body {
 
 .content {
     font-family: "Roboto";
-    color: #65995b;
+    color: #cecfcd;
     padding: 0 25px;
     margin-bottom: 30px;
 }
@@ -228,7 +228,7 @@ body {
 .menu-food-item-description {
     padding-top: 2px;
     font-size: 0.8em;
-    color: #586e58;
+    color: #afafaf;
 }
 
 .menu-hookah-item:last-child,
