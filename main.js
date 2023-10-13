@@ -86,6 +86,26 @@ function main() {
 function onLoadWindow() {
     fillHookahMenuList(hookahPrices);
     fillFoodMenuList(menu);
+
+    var menuFoodListElement = window.document.querySelector('.menu-food-list')
+    menuFoodListElement.addEventListener('click', function(event) {
+        var target = event.target;
+
+        console.log('')
+        
+        if (target.className !== 'menu-food-category-header') {
+            return;
+        }
+
+        var menuFoodCategoryElement = target.parentElement;
+        var menuFoodListElement = menuFoodCategoryElement.querySelector('.menu-food-list');
+
+        if (menuFoodListElement.classList.contains('menu-food-list_hidden')) {
+            menuFoodListElement.classList.remove('menu-food-list_hidden');
+        } else {
+            menuFoodListElement.classList.add('menu-food-list_hidden');
+        }
+    });
 }
 
 function onTouchstart() {
@@ -169,8 +189,16 @@ function fillFoodMenuList(menu) {
 
         var categoryHeaderElement = window.document.createElement('h3');
         categoryHeaderElement.className = 'menu-food-category-header';
-        categoryHeaderElement.innerText = name;
 
+        var categoryHeaderTextElement = window.document.createElement('div');
+        categoryHeaderTextElement.className = 'menu-food-category-header-text';
+        categoryHeaderTextElement.innerText = name;
+
+        var categoryHeaderIconElement = window.document.createElement('div');
+        categoryHeaderIconElement.className = 'menu-food-category-header-icon';
+
+        categoryHeaderElement.appendChild(categoryHeaderTextElement);
+        categoryHeaderElement.appendChild(categoryHeaderIconElement);
         categoryElement.appendChild(categoryHeaderElement);
 
         fillFoodMenuCategoryList(items, categoryElement);
@@ -181,7 +209,7 @@ function fillFoodMenuList(menu) {
 
 function fillFoodMenuCategoryList(items, categoryElement) {
     var itemListElement = window.document.createElement('ul');
-    itemListElement.className = 'menu-food-list';
+    itemListElement.className = 'menu-food-list menu-food-list_hidden';
 
     for (var i = 0; i < items.length; i++) {
         var item = items[i];

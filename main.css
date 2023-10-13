@@ -174,7 +174,6 @@ body {
 .menu-food {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 20px;
     border-left: 10px double #546e53;
     border-right: 10px double #546e53;
@@ -197,11 +196,16 @@ body {
     font-family: "RobotoBold";
     color: #93d170;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .menu-hookah-list,
 .menu-food-list {
     list-style-type: none;
+}
+
+.menu-food-list_hidden {
+    display: none;
 }
 
 .menu-hookah-item,
@@ -250,6 +254,20 @@ body {
 }
 
 .menu-food-category-header {
-    color: #93d170;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu-food-category-header-text {
+    color: #93d170;
+    margin-right: 0.1em;
+}
+
+.menu-food-category-header-icon {
+    background-image: url('images/arrow_drop_down.png');
+    background-position: center;
+    width: 1em;
+    height: 1em;
 }
