@@ -136,25 +136,26 @@ function onLoadWindow() {
     fillHookahMenuList(hookahPrices);
     fillFoodMenuList(menu);
 
-    var menuFoodListElement = window.document.querySelector('.menu-food-list')
-    menuFoodListElement.addEventListener('click', function(event) {
-        var target = event.target;
+    var menuFoodCategoryHeaderElements = window.document.querySelectorAll('.menu-food-category-header');
+    for (var i = 0; i < menuFoodCategoryHeaderElements.length; i++) {
+        var element = menuFoodCategoryHeaderElements[i];
+        element.addEventListener('click', onMenuFoodCategoryHeaderElementClick);
+    }
+}
 
-        console.log('')
-        
-        if (target.className !== 'menu-food-category-header') {
-            return;
-        }
+function onMenuFoodCategoryHeaderElementClick(event) {
+    var target = event.target;
+    
+    var categoryElement = target;
+    while (!categoryElement.classList.contains('menu-food-category')) {
+        categoryElement = categoryElement.parentElement;
+    }
 
-        var menuFoodCategoryElement = target.parentElement;
-        var menuFoodListElement = menuFoodCategoryElement.querySelector('.menu-food-list');
-
-        if (menuFoodListElement.classList.contains('menu-food-list_hidden')) {
-            menuFoodListElement.classList.remove('menu-food-list_hidden');
-        } else {
-            menuFoodListElement.classList.add('menu-food-list_hidden');
-        }
-    });
+    if (categoryElement.classList.contains('menu-food-category_hidden')) {
+        categoryElement.classList.remove('menu-food-category_hidden');
+    } else {
+        categoryElement.classList.add('menu-food-category_hidden');
+    }
 }
 
 function onTouchstart() {
@@ -207,19 +208,11 @@ function fillHookahMenuList(hookahPrices) {
     for (var name in hookahPrices) {
         var price = hookahPrices[name];
 
-        var itemNameElement = window.document.createElement('div');
-        itemNameElement.className = 'menu-hookah-item-name';
-        itemNameElement.innerText = name;
-
-        var itemPriceElement = window.document.createElement('div');
-        itemPriceElement.className = 'menu-hookah-item-price';
-        itemPriceElement.innerText = price;
-
         var itemElement = window.document.createElement('li');
         itemElement.className = 'menu-hookah-item';
-
-        itemElement.appendChild(itemNameElement);
-        itemElement.appendChild(itemPriceElement);
+        itemElement.innerHTML = 
+            '<div class="menu-hookah-item-name">' + name + '</div>' +
+            '<div class="menu-hookah-item-price">' + price + '</div>';
 
         hookahMenuListElement.appendChild(itemElement);
     }
@@ -234,20 +227,14 @@ function fillFoodMenuList(menu) {
         var items = category.items;
 
         var categoryElement = window.document.createElement('li');
-        categoryElement.className = 'menu-food-category';
+        categoryElement.className = 'menu-food-category menu-food-category_hidden';
 
         var categoryHeaderElement = window.document.createElement('h3');
         categoryHeaderElement.className = 'menu-food-category-header';
+        categoryHeaderElement.innerHTML = 
+            '<div class="menu-food-category-header-text">' + name + '</div>' +
+            '<div class="menu-food-category-header-icon"></div>';
 
-        var categoryHeaderTextElement = window.document.createElement('div');
-        categoryHeaderTextElement.className = 'menu-food-category-header-text';
-        categoryHeaderTextElement.innerText = name;
-
-        var categoryHeaderIconElement = window.document.createElement('div');
-        categoryHeaderIconElement.className = 'menu-food-category-header-icon';
-
-        categoryHeaderElement.appendChild(categoryHeaderTextElement);
-        categoryHeaderElement.appendChild(categoryHeaderIconElement);
         categoryElement.appendChild(categoryHeaderElement);
 
         fillFoodMenuCategoryList(items, categoryElement);
@@ -258,7 +245,7 @@ function fillFoodMenuList(menu) {
 
 function fillFoodMenuCategoryList(items, categoryElement) {
     var itemListElement = window.document.createElement('ul');
-    itemListElement.className = 'menu-food-list menu-food-list_hidden';
+    itemListElement.className = 'menu-food-list';
 
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
@@ -266,39 +253,23 @@ function fillFoodMenuCategoryList(items, categoryElement) {
         var price = item.price;
         var description = item.description;
 
-        var itemNameElement = window.document.createElement('div');
-        itemNameElement.className = 'menu-food-item-name';
-        itemNameElement.innerText = name;
-
-        var itemPriceElement = window.document.createElement('div');
-        itemPriceElement.className = 'menu-food-item-price';
-        itemPriceElement.innerText = price;
-
-        if (description != null) {
-            var itemDescriptionElement = window.document.createElement('div');
-            itemDescriptionElement.className = 'menu-food-item-description';
-            itemDescriptionElement.innerText = description;
-        }
+        var itemElement = window.document.createElement('li');
+        itemElement.className = 'menu-food-item';
 
         var itemFirstLineElement = window.document.createElement('div');
         itemFirstLineElement.className = 'menu-food-item-first-line';
-
-        itemFirstLineElement.appendChild(itemNameElement);
-        itemFirstLineElement.appendChild(itemPriceElement);
+        itemFirstLineElement.innerHTML = 
+            '<div class="menu-food-item-name">' + name + '</div>' +
+            '<div class="menu-food-item-price">' + price + '</div>';
+        
+        itemElement.appendChild(itemFirstLineElement);
 
         if (description != null) {
             var itemSecondLineElement = window.document.createElement('div');
             itemSecondLineElement.className = 'menu-food-item-second-line';
+            itemSecondLineElement.innerHTML = 
+                '<div class="menu-food-item-description">' + description + '</div>';
 
-            itemSecondLineElement.appendChild(itemDescriptionElement);
-        }
-
-        var itemElement = window.document.createElement('li');
-        itemElement.className = 'menu-food-item';
-
-        itemElement.appendChild(itemFirstLineElement);
-
-        if (description != null) {
             itemElement.appendChild(itemSecondLineElement);
         }
         

@@ -204,10 +204,6 @@ body {
     list-style-type: none;
 }
 
-.menu-food-list_hidden {
-    display: none;
-}
-
 .menu-hookah-item,
 .menu-food-item {
     display: flex;
@@ -253,11 +249,20 @@ body {
     margin-bottom: 0;
 }
 
+.menu-food-category_hidden .menu-food-category-header-icon {
+    transform: rotate(0deg);
+}
+
+.menu-food-category_hidden .menu-food-list {
+    display: none;
+}
+
 .menu-food-category-header {
     margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .menu-food-category-header-text {
@@ -268,6 +273,9 @@ body {
 .menu-food-category-header-icon {
     background-image: url('images/arrow_drop_down.png');
     background-position: center;
-    width: 1em;
-    height: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 0.5em;
+    height: 0.5em;
+    transform: rotate(180deg);
 }
