@@ -171,7 +171,8 @@ body {
 }
 
 .menu-hookah,
-.menu-food {
+.menu-food,
+.menu-drink {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -187,77 +188,77 @@ body {
 }
 
 .menu-food {
+    border-bottom: 5px double #546e53;
+}
+
+.menu-drink {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
-.menu-hookah-title,
-.menu-food-title {
+.menu-title {
     font-family: "RobotoBold";
     color: #93d170;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.menu-hookah-list,
-.menu-food-list {
+.menu-list {
     list-style-type: none;
 }
 
-.menu-hookah-item,
-.menu-food-item {
+.menu-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.menu-hookah-item {
+.menu-hookah .menu-item {
     flex-direction: row;
 }
 
-.menu-food-item {
+.menu-food .menu-item,
+.menu-drink .menu-item {
     flex-direction: column;
 }
 
-.menu-food-item-first-line {
+.menu-item-first-line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.menu-food-item-description {
+.menu-item-description {
     padding-top: 2px;
     font-size: 0.8em;
     color: #afafaf;
 }
 
-.menu-hookah-item:last-child,
-.menu-food-item:last-child {
+.menu-item:last-child {
     margin-bottom: 0;
 }
 
-.menu-hookah-item-name,
-.menu-food-item-name {
+.menu-item-name {
     margin-right: 20px;
 }
 
-.menu-food-category {
+.menu-category {
     margin-bottom: 15px;
 }
 
-.menu-food-category:last-child {
+.menu-category:last-child {
     margin-bottom: 0;
 }
 
-.menu-food-category_hidden .menu-food-category-header-icon {
+.menu-category_hidden .menu-category-header-icon {
     transform: rotate(0deg);
 }
 
-.menu-food-category_hidden .menu-food-list {
+.menu-category_hidden .menu-list {
     display: none;
 }
 
-.menu-food-category-header {
+.menu-category-header {
     margin-bottom: 15px;
     display: flex;
     flex-direction: row;
@@ -265,12 +266,12 @@ body {
     align-items: center;
 }
 
-.menu-food-category-header-text {
+.menu-category-header-text {
     color: #93d170;
     margin-right: 0.1em;
 }
 
-.menu-food-category-header-icon {
+.menu-category-header-icon {
     background-image: url('images/arrow_drop_down.png');
     background-position: center;
     background-repeat: no-repeat;
