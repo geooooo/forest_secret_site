@@ -118,7 +118,7 @@ var textMenuDrink = `
 // Стоимость кальянов
 var hookahPrices = {
     "Классическая чаша": "900р", 
-    "WTO / Bonche / Tangiers": "1200р",
+    "WTO / Bonche / Tangiers / Satyr Platinum Collection": "1200р",
     "Фруктовая чаша": "1400р",   
     "Забивка с собой": "400р",
     "Уголь 12 штук": "200р",      
