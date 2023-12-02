@@ -194,6 +194,7 @@ function onTouchstart() {
     videoElement.style.objectFit = "cover";
     videoElement.style.pointerEvents = "none";
     videoElement.style.mixBlendMode = "lighten";
+    videoElement.style.opacity = "0.8";
 
     videoElement.src = 'videos/smoke.mp4';
     videoElement.type = 'video/mp4';
