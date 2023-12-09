@@ -242,6 +242,17 @@ body {
     margin-right: 20px;
 }
 
+.menu-item-price {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.menu-item-price::after {
+    content: "₽";
+    font-size: 0.9em;
+}
+
 .menu-category {
     margin-bottom: 15px;
 }
