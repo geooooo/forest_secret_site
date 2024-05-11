@@ -326,30 +326,10 @@ body {
     width: 0.5em;
     height: 0.5em;
     transform: rotate(180deg);
-    animation: aShowRotateCategoryIcon 200ms ease-in 1 forwards;
 }
 
 .menu-category_hidden .menu-category-header-icon {
     transform: rotate(0deg);
-    animation: aHideRotateCategoryIcon 200ms ease-in 1 forwards;
-}
-
-@keyframes aHideRotateCategoryIcon {
-    0% { 
-        transform: rotate(180deg); 
-    }   
-    100% { 
-        transform: rotate(0deg); 
-    }
-}
-
-@keyframes aShowRotateCategoryIcon {
-    0% { 
-        transform: rotate(0deg); 
-    }   
-    100% { 
-        transform: rotate(180deg); 
-    }
 }
 
 .shadow {
