@@ -245,7 +245,7 @@ body {
 
 .menu-list {
     list-style-type: none;
-}
+    }
 
 .menu-item {
     display: flex;
@@ -301,10 +301,6 @@ body {
     margin-bottom: 0;
 }
 
-.menu-category_hidden .menu-category-header-icon {
-    transform: rotate(0deg);
-}
-
 .menu-category_hidden .menu-list {
     display: none;
 }
@@ -330,6 +326,30 @@ body {
     width: 0.5em;
     height: 0.5em;
     transform: rotate(180deg);
+    animation: aShowRotateCategoryIcon 200ms ease-in 1 forwards;
+}
+
+.menu-category_hidden .menu-category-header-icon {
+    transform: rotate(0deg);
+    animation: aHideRotateCategoryIcon 200ms ease-in 1 forwards;
+}
+
+@keyframes aHideRotateCategoryIcon {
+    0% { 
+        transform: rotate(180deg); 
+    }   
+    100% { 
+        transform: rotate(0deg); 
+    }
+}
+
+@keyframes aShowRotateCategoryIcon {
+    0% { 
+        transform: rotate(0deg); 
+    }   
+    100% { 
+        transform: rotate(180deg); 
+    }
 }
 
 .shadow {
@@ -354,13 +374,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: -1;
     width: 60%;
-    height: 100px;
+    height: 200px;
     background-color: rgb(15, 15, 15);
     left: 20%;
-    top: calc(50% - 50px);
+    top: calc(50% - 100px);
     border: 5px double #d7d9d6;
     border-radius: 10px;
     color: rgb(206, 207, 205);
@@ -385,6 +406,10 @@ body {
     margin-bottom: 1em;
 }
 
+.dialog-connect-wifi-password {
+    margin-bottom: 1em;
+}
+
 .dialog-connect-wifi-name,
 .dialog-connect-wifi-password {
     text-align: center;
@@ -394,4 +419,9 @@ body {
 .dialog-connect-wifi-name b,
 .dialog-connect-wifi-password b {
     color: #df2514;
+}
+
+.dialog-connect-wifi-qr {
+    width: 100px;
+    height: 100px;
 }
