@@ -1,5 +1,11 @@
 "use strict"
 
+// TODO:
+// Аналитика
+// Отзыв о работнике
+// Оставить чаевые
+// Пароль к wifi
+
 // НАЧАЛО - Содержимое этого блока можно редактировать чтобы менять информацию на сайте
 
 // Писать внутри кавычек ``
@@ -51,11 +57,11 @@ var textMenuDrink = `
     -Апельсин, чай нахальный фрукт, чили, бадьян
 
     *Чай (600/900 мл)
-"Земляничный Улун" - 300/400
+"Земляничный Улун"  - 300/400
 -Китайский улун, собранный на плантациях провинции Фуцзянь, с добавлением кусочков земляники.
 "Летняя Беседа" - 200/300
 -Натуральная травяная смесь, которая не содержит ничего лишнего, исключительно натуральные листочки мяты и благоухающие цветки липы
-"Танец Единорога" - 200/300
+"Танец Единорога"  - 200/300
 -Зеленый чай с плодами можжевельника, куосчками персика и ананаса, листьями брусники и лепестками розы.
 "Английская Королева" - 200/300
 -Черный цейлонский чай с лепестками чайной розы, кусочками клубники и ягодами ежевики. С ярким вкусом клубники и нежным ароматом розы.
@@ -154,6 +160,10 @@ Otto Von Schrodder Hefeweizen - 300
     -Грейпфрут, лимон, апельсин
 `;
 
+// Для подключения к Wifi
+var wifiName = "ForestWifi";
+var wifiPassword = "forest20";
+
 // Стоимость кальянов
 var hookahPrices = {
     "Классическая чаша": "1100", 
@@ -183,12 +193,35 @@ function onLoadWindow() {
     fillHookahMenuList(hookahPrices);
     fillFoodAndDrinkMenuList(menuFood, '.menu-food');
     fillFoodAndDrinkMenuList(menuDrink, '.menu-drink');
+    fillWifiData(wifiName, wifiPassword);
+
+    var connectWifiButtonElement = window.document.querySelector(".header-connect-wifi-button");
+    connectWifiButtonElement.addEventListener("click", onConnectWifiButtonElementClick);
+
+    var shadowElement = window.document.querySelector(".shadow");
+    shadowElement.addEventListener("click", onShadowElementClick);
 
     var menuCategoryHeaderElements = window.document.querySelectorAll('.menu-category-header');
     for (var i = 0; i < menuCategoryHeaderElements.length; i++) {
         var element = menuCategoryHeaderElements[i];
         element.addEventListener('click', onMenuCategoryHeaderElementClick);
     }
+}
+
+function onConnectWifiButtonElementClick() {
+    var shadowElement = window.document.querySelector(".shadow");
+    shadowElement.classList.add("shadow_showed");
+
+    var dialogConnectWifiElement = window.document.querySelector(".dialog-connect-wifi");
+    dialogConnectWifiElement.classList.add("dialog-connect-wifi_showed");
+}
+
+function onShadowElementClick() {
+    var dialogConnectWifiElement = window.document.querySelector(".dialog-connect-wifi");
+    dialogConnectWifiElement.classList.remove("dialog-connect-wifi_showed");
+
+    var shadowElement = window.document.querySelector(".shadow");
+    shadowElement.classList.remove("shadow_showed");
 }
 
 function onMenuCategoryHeaderElementClick(event) {
@@ -249,6 +282,14 @@ function onVideoEnded() {
 
     mainElement.removeChild(videoElement);
     videoElement = null;
+}
+
+function fillWifiData(wifiName, wifiPassword) {
+    var wifiNameElement = window.document.querySelector('.dialog-connect-wifi-name');
+    var wifiPasswordElement = window.document.querySelector('.dialog-connect-wifi-password');
+
+    wifiNameElement.innerHTML = wifiNameElement.innerHTML.replace("{0}", wifiName);
+    wifiPasswordElement.innerHTML = wifiPasswordElement.innerHTML.replace("{0}", wifiPassword);
 }
 
 function fillHookahMenuList(hookahPrices) {
