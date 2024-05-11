@@ -71,6 +71,12 @@ body {
     line-height: 1;
 }
 
+.header-connect-wifi-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .header-connect-wifi-button {
     padding: 4px 8px;
     border-bottom: 1px solid transparent;
