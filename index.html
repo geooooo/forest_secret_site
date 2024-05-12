@@ -13,7 +13,20 @@
         <link rel="icon" type="image/png" href="images/logo.png?">
 
         <link rel="stylesheet" href="main.css">
-        <script src="main.js"></script>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/private.js"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+            import { getDatabase, get, set, ref } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+            window.firebase.initializeApp = initializeApp;
+            window.firebase.getDatabase = getDatabase;
+            window.firebase.get = get;
+            window.firebase.set = set;
+            window.firebase.ref = ref;
+        </script>
+        <script src="scripts/analytics.js"></script>
     </head>
 
     <body class="main">
@@ -72,15 +85,15 @@
             </div>
             <div class="footer-second-line">
                 <div class="footer-review">
-                    <a class="review-link" href="https://yandex.ru/maps/org/forest_sikret_rum/234057190324/reviews/?ll=36.076953%2C52.970341&z=13">
+                    <a class="review-link" href="https://yandex.ru/maps/org/forest_sikret_rum/234057190324/reviews/?ll=36.076953%2C52.970341&z=13" target="_blank">
                         <div class="review-icon"></div>
                         <div class="review-link-text">Оставить отзыв</div>
                     </a>
                 </div>
                 <div class="footer-social-links">
-                    <a class="social-link social-link-telegram" href="https://t.me/forestsecretroom"></a>
-                    <a class="social-link social-link-instagram" href="https://www.instagram.com/forest.secretroom"></a>
-                    <a class="social-link social-link-vk" href="https://vk.com/forestsecret57"></a>
+                    <a class="social-link social-link-telegram" href="https://t.me/forestsecretroom" target="_blank"></a>
+                    <a class="social-link social-link-instagram" href="https://www.instagram.com/forest.secretroom" target="_blank"></a>
+                    <a class="social-link social-link-vk" href="https://vk.com/forestsecret57" target="_blank"></a>
                 </div>
             </div>
         </footer>
