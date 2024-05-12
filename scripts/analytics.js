@@ -8,12 +8,18 @@ var events = {
     categoryClick: "category-click",
 };
 
+var app;
+var db;
+
 function main() {
     window.addEventListener('load', onLoadWindow);
 }
 
 function onLoadWindow() {
     initHandlers();
+
+    app = window.firebase.initializeApp(window.firebase.config);
+    db = window.firebase.getDatabase(app);
 }
 
 function initHandlers() {
@@ -75,34 +81,51 @@ function onMenuCategoryElementClick(event) {
 }
 
 function socialTgClick() {
-    // send(events.socialTgClick);
+    increment(events.socialTgClick);
 }
 
 function socialInstClick() {
-    // send(events.socialInstClick);
+    increment(events.socialInstClick);
 }
 
 function socialVkClick() {
-    // send(events.socialVkClick);
+    increment(events.socialVkClick);
 }
 
 function reviewClick() {
-    // send(events.reviewClick);
+    increment(events.reviewClick);
 }
 
 function phoneClick() {
-    // send(events.reviewClick);
+    increment(events.phoneClick);
 }
 
 function connectWifiClick() {
-    // send(events.connectWifiClick);
+    increment(events.connectWifiClick);
 }
 
 function categoryClick(category, isOpen) {
-    // send(events.connectWifiClick, {
-    //     category: category,
-    //     isOpen: isOpen,
-    // });
+    var ref = window.firebase.ref(db, "analytics/" + events.categoryClick);
+
+    window.firebase.get(ref).then(function(snapshot) {
+        var categories = snapshot.val();
+        var step = isOpen? 1 : 0;
+        var count = (category in categories)? categories[category] + step : 1;
+        
+        categories[category] = count;
+        
+        window.firebase.set(ref, categories);
+    });
+}
+
+function increment(event) {
+    var ref = window.firebase.ref(db, "analytics/" + event);
+    
+    window.firebase.get(ref).then(function(snapshot) {
+        var count = snapshot.val();
+        
+        window.firebase.set(ref, count + 1);
+    });
 }
 
 main();
