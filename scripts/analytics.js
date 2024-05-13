@@ -8,10 +8,16 @@ var events = {
     categoryClick: "category-click",
 };
 
+var dbAnalyticsSection = "analytics-v2";
+
 var app;
 var db;
 
 function main() {
+    if (!window.isEnableAnalytics) {
+        return;
+    }
+
     window.addEventListener('load', onLoadWindow);
 }
 
@@ -81,51 +87,57 @@ function onMenuCategoryElementClick(event) {
 }
 
 function socialTgClick() {
-    increment(events.socialTgClick);
+    elementClick(events.socialTgClick);
 }
 
 function socialInstClick() {
-    increment(events.socialInstClick);
+    elementClick(events.socialInstClick);
 }
 
 function socialVkClick() {
-    increment(events.socialVkClick);
+    elementClick(events.socialVkClick);
 }
 
 function reviewClick() {
-    increment(events.reviewClick);
+    elementClick(events.reviewClick);
 }
 
 function phoneClick() {
-    increment(events.phoneClick);
+    elementClick(events.phoneClick);
 }
 
 function connectWifiClick() {
-    increment(events.connectWifiClick);
+    elementClick(events.connectWifiClick);
 }
 
 function categoryClick(category, isOpen) {
-    var ref = window.firebase.ref(db, "analytics/" + events.categoryClick);
+    var time = getTime();
+    var date = getDate();
+    var ref = window.firebase.ref(db, dbAnalyticsSection + "/" + events.categoryClick + "/" + time);
 
-    window.firebase.get(ref).then(function(snapshot) {
-        var categories = snapshot.val();
-        var step = isOpen? 1 : 0;
-        var count = (category in categories)? categories[category] + step : 1;
-        
-        categories[category] = count;
-        
-        window.firebase.set(ref, categories);
+    window.firebase.set(ref, {
+        date: date,
+        category: category,
+        isOpen: isOpen,
     });
 }
 
-function increment(event) {
-    var ref = window.firebase.ref(db, "analytics/" + event);
+function elementClick(event) {
+    var time = getTime();
+    var date = getDate();
+    var ref = window.firebase.ref(db, dbAnalyticsSection + "/" + event + "/" + time);
     
-    window.firebase.get(ref).then(function(snapshot) {
-        var count = snapshot.val();
-        
-        window.firebase.set(ref, count + 1);
+    window.firebase.set(ref, {
+        date: date,
     });
+}
+
+function getDate() {
+    return (new Date()).toString();
+}
+
+function getTime() {
+    return Date.now();
 }
 
 main();
