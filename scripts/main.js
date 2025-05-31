@@ -172,10 +172,10 @@ var wifiPassword = "forest20";
 
 // Стоимость кальянов
 var hookahPrices = {
-    "Классическая чаша": "1100", 
-    "WTO / Bonche / Tangiers / Satyr Platinum Collection": "1400",
-    "Фруктовая чаша": "1600",   
-    "Забивка с собой": "500",
+    "Классическая чаша": "1200", 
+    "WTO / Bonche / Tangiers / Satyr Platinum Collection": "1500",
+    "Фруктовая чаша": "1700",   
+    "Забивка с собой": "600",
     "Уголь 12 штук": "200",      
 };
 
